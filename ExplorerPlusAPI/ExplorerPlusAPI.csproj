@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{407FE195-8DF2-41E4-9105-22F37AB24919}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExplorerPlus.API</RootNamespace>
+    <AssemblyName>ExplorerPlusAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\ExplorerPlusFilesystemList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExplorerPlusFilesystemList.Designer.cs">
+      <DependentUpon>ExplorerPlusFilesystemList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExplorerPlusFilesystemView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExplorerPlusFilesystemView.Designer.cs">
+      <DependentUpon>ExplorerPlusFilesystemView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExplorerPlusFileView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExplorerPlusFileView.Designer.cs">
+      <DependentUpon>ExplorerPlusFileView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExplorerPlusMenuBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExplorerPlusMenuBar.Designer.cs">
+      <DependentUpon>ExplorerPlusMenuBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExplorerPlusMenuBarExtend.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExplorerPlusMenuBarExtend.Designer.cs">
+      <DependentUpon>ExplorerPlusMenuBarExtend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExplorerPlusNetworkFilesystem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExplorerPlusNetworkFilesystem.Designer.cs">
+      <DependentUpon>ExplorerPlusNetworkFilesystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExplorerPlusStatusDrive.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExplorerPlusStatusDrive.Designer.cs">
+      <DependentUpon>ExplorerPlusStatusDrive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectoryFunctions.cs" />
+    <Compile Include="DriveFunctions.cs" />
+    <Compile Include="ExtraFunctions.cs" />
+    <Compile Include="FileFunctions.cs" />
+    <Compile Include="FilesystemIcons.cs" />
+    <Compile Include="LocalNetworkFunctions.cs" />
+    <Compile Include="PingClass.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="WinAPI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Shell32">
+      <Guid>{50A7E9B0-70EF-11D1-B75A-00A0C90564FE}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\ExplorerPlusFilesystemList.resx">
+      <DependentUpon>ExplorerPlusFilesystemList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ExplorerPlusFilesystemView.resx">
+      <DependentUpon>ExplorerPlusFilesystemView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ExplorerPlusFileView.resx">
+      <DependentUpon>ExplorerPlusFileView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ExplorerPlusMenuBar.resx">
+      <DependentUpon>ExplorerPlusMenuBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ExplorerPlusMenuBarExtend.resx">
+      <DependentUpon>ExplorerPlusMenuBarExtend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ExplorerPlusNetworkFilesystem.resx">
+      <DependentUpon>ExplorerPlusNetworkFilesystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ExplorerPlusStatusDrive.resx">
+      <DependentUpon>ExplorerPlusStatusDrive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StringResource\StringResource.vbproj">
+      <Project>{95b85f73-42fc-4e7b-884b-739a97494565}</Project>
+      <Name>StringResource</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Icons\ico_search.ico" />
+    <Content Include="Icons\ico_newfolder.ico" />
+    <Content Include="Icons\ico_canceldelete.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,14 @@
+*.suo
+My Project
+[Bb]in
+[Dd]ebug
+[Rr]elease
+App.config
+obj
+
+Properties
+*.vbproj.user
+*.dll
+*.jpg
+*.txt
+*.log
