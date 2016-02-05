@@ -46,9 +46,16 @@
             this.lbsizefree = new System.Windows.Forms.Label();
             this.lbsizeges = new System.Windows.Forms.Label();
             this.storageinfotimer = new System.Windows.Forms.Timer(this.components);
+            this.picimage = new System.Windows.Forms.PictureBox();
+            this.lbdrivename = new System.Windows.Forms.Label();
+            this.lbmodel = new System.Windows.Forms.Label();
+            this.lbdiskindex = new System.Windows.Forms.Label();
+            this.lbpartindex = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picstoragebar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picimage)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -64,10 +71,15 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.lbpartindex);
+            this.tabPage1.Controls.Add(this.lbdiskindex);
+            this.tabPage1.Controls.Add(this.lbmodel);
+            this.tabPage1.Controls.Add(this.lbdrivename);
+            this.tabPage1.Controls.Add(this.picimage);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(659, 278);
+            this.tabPage1.Size = new System.Drawing.Size(509, 220);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Allgemein";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -239,6 +251,55 @@
             this.storageinfotimer.Interval = 1000;
             this.storageinfotimer.Tick += new System.EventHandler(this.storageinfotimer_Tick);
             // 
+            // picimage
+            // 
+            this.picimage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.picimage.Location = new System.Drawing.Point(21, 18);
+            this.picimage.Name = "picimage";
+            this.picimage.Size = new System.Drawing.Size(48, 48);
+            this.picimage.TabIndex = 0;
+            this.picimage.TabStop = false;
+            // 
+            // lbdrivename
+            // 
+            this.lbdrivename.AutoSize = true;
+            this.lbdrivename.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbdrivename.Location = new System.Drawing.Point(85, 23);
+            this.lbdrivename.Name = "lbdrivename";
+            this.lbdrivename.Size = new System.Drawing.Size(83, 16);
+            this.lbdrivename.TabIndex = 1;
+            this.lbdrivename.Text = "lbdrivename";
+            // 
+            // lbmodel
+            // 
+            this.lbmodel.AutoSize = true;
+            this.lbmodel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbmodel.Location = new System.Drawing.Point(85, 50);
+            this.lbmodel.Name = "lbmodel";
+            this.lbmodel.Size = new System.Drawing.Size(57, 16);
+            this.lbmodel.TabIndex = 1;
+            this.lbmodel.Text = "lbmodel";
+            // 
+            // lbdiskindex
+            // 
+            this.lbdiskindex.AutoSize = true;
+            this.lbdiskindex.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbdiskindex.Location = new System.Drawing.Point(85, 80);
+            this.lbdiskindex.Name = "lbdiskindex";
+            this.lbdiskindex.Size = new System.Drawing.Size(76, 16);
+            this.lbdiskindex.TabIndex = 1;
+            this.lbdiskindex.Text = "lbdiskindex";
+            // 
+            // lbpartindex
+            // 
+            this.lbpartindex.AutoSize = true;
+            this.lbpartindex.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbpartindex.Location = new System.Drawing.Point(85, 111);
+            this.lbpartindex.Name = "lbpartindex";
+            this.lbpartindex.Size = new System.Drawing.Size(74, 16);
+            this.lbpartindex.TabIndex = 1;
+            this.lbpartindex.Text = "lbpartindex";
+            // 
             // ExplorerPlusStatusDrive
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,9 +308,12 @@
             this.Name = "ExplorerPlusStatusDrive";
             this.Size = new System.Drawing.Size(517, 246);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picstoragebar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picimage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -273,5 +337,10 @@
         private System.Windows.Forms.Label lbstorageinfo;
         private System.Windows.Forms.PictureBox picstoragebar;
         private System.Windows.Forms.Timer storageinfotimer;
+        private System.Windows.Forms.PictureBox picimage;
+        private System.Windows.Forms.Label lbpartindex;
+        private System.Windows.Forms.Label lbdiskindex;
+        private System.Windows.Forms.Label lbmodel;
+        private System.Windows.Forms.Label lbdrivename;
     }
 }

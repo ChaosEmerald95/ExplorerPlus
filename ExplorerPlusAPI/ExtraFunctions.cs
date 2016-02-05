@@ -173,8 +173,14 @@ namespace ExplorerPlus.API
         public static string GetFileSizeKB(double filesize)
         {
             double size = Math.Round(filesize / 1024, 0);
+            string text = GetNumberWithPoints(size) + " KB";
+            return text;
+        }
+
+        public static string GetNumberWithPoints(double number)
+        {
             string t = "";
-            string text = size.ToString().Reverse(); ;
+            string text = number.ToString().Reverse(); ;
             int pointc = Convert.ToInt32(Math.Floor(Convert.ToDecimal(text.Length / 3))) + 1;
             if (text.Length % 3 == 0)
                 pointc--;
@@ -191,13 +197,12 @@ namespace ExplorerPlus.API
 
                         t += "." + text.Substring(i * 3, 3);
                 }
-                text = t.Reverse() + " KB";
+                text = t.Reverse();
             }
             else
             {
-                text = text.Reverse() + " KB";
+                text = text.Reverse();
             }
-            
             return text;
         }
 
