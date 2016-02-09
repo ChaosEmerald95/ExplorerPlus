@@ -13,6 +13,7 @@ namespace ExplorerPlus.API.Controls
 {
     //Delegates
     public delegate void ExplorerPlusControlsHandler(string path);
+    public delegate void ExplorerPlusFilesystemHandlerEx(string path, int type);
 
     public partial class ExplorerPlusFilesystemView : UserControl
     {
@@ -22,6 +23,8 @@ namespace ExplorerPlus.API.Controls
 
         //Events
         public event ExplorerPlusControlsHandler SelectedPathChanged;
+       
+      
 
         private string _selectedpath = "";
         //private bool _showhiddendir = false;

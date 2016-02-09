@@ -54,7 +54,7 @@ namespace ExplorerPlus.API.Controls
             //Jetzt muss der Balken gezeichnet werden. Die Farbe ist AquaMarine
             Graphics g = picstoragebar.CreateGraphics();
             g.Clear(Color.Transparent);
-            Color fillcolor = Color.Aquamarine;
+            Color fillcolor = Color.Aqua;
             Brush brush = new SolidBrush(fillcolor);
 
             //Die Werte müssen gezeichnet werden. Da die Größe des Balkens sich verändern kann, muss es
