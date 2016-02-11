@@ -8,7 +8,7 @@ Public Module StringResource
     Friend Declare Auto Function LoadString Lib "user32.dll" (ByVal hInstance As IntPtr, ByVal uID As Integer, <MarshalAs(UnmanagedType.LPTStr)> ByVal lpBuffer As System.Text.StringBuilder, ByVal nBufferMax As Integer) As Integer
     Friend Declare Function FreeLibrary Lib "kernel32.dll" (ByVal hModule As IntPtr) As Boolean
 #Region "StringResourceLoad"
-    Public Function GetStringResourceFromFile(dec As String)
+    Public Function GetStringResourceFromFile(dec As String) As String
         'Dateipfad ermitteln und alle Kommas entfernen
         dec = dec.Replace("@", "") 'Da manche ein @-Zeichen haben, muss es entfernt werden
         Dim np As String = dec.Substring(0, dec.LastIndexOf(","))

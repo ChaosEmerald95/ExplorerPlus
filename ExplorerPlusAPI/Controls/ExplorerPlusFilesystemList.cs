@@ -19,7 +19,8 @@ namespace ExplorerPlus.API.Controls
         public event ExplorerPlusControlsHandler FilesystementySelected;
 
         private string _aktpfad = ""; //Wenn dieser leer ist, sollen die Drives angezeigt werden, bei Ordnern muss IMMER der Backslash am Ende sein
-        private List<string> recentpaths = new List<string>(10); //Liste mit den zuletzt ausgewählten Pfaden
+        private List<string> recentpaths; //Liste mit den zuletzt ausgewählten Pfaden
+        private List<string> undolist = null;
         private ImageList smlist = new ImageList();
         //private bool ShowComputer = true; //Ob aktuell die Drives angezeigt werden
         private int undopos = 0;
@@ -34,18 +35,24 @@ namespace ExplorerPlus.API.Controls
             lvfs.SmallImageList = smlist;
 
             //Erster Eintrag in Liste eintragen
-            recentpaths[0] = "";
+            recentpaths = new List<string>(10);
+            recentpaths.Add("");
         }
 
         public string AktuellerPfad
         {
             get { return _aktpfad; }
+            set
+            {
+                _aktpfad = value;
+                ShowPathContent();
+            }
         }
 
         private void ShowPathContent()
         {
             //ListView leeren
-            lvfs.Clear();
+            lvfs.Items.Clear();
 
             //Wenn der Pfad leer ist, sollen die Drives angezeigt werden. Wenn aber ein Pfad enthalten ist
             //soll der Inhalt des Pfades (Ordner) angezeigt werden
@@ -93,8 +100,6 @@ namespace ExplorerPlus.API.Controls
                             lvi.SubItems.Add(DriveFunctions.DRIVE_VOLUMELABEL_STD_NET);
                         else
                             lvi.SubItems.Add("Unbekannter Laufwerkstyp");
-
-                        lvi.SubItems.Add(drive.TotalSize.ToString());
                         lvfs.Items.Add(lvi);
                     }
                 }
@@ -106,7 +111,6 @@ namespace ExplorerPlus.API.Controls
                 smlist.Images.Add(FilesystemIcons.ICON_FILE_16x);
                 
                 //Zuerst kommen die Directories
-                //FriendlyTypeName vom Ordner unter: @shell32.dll,-10152
                 foreach (DirectoryInfo d in dirinfo.GetDirectories())
                 {
                     try
@@ -119,7 +123,7 @@ namespace ExplorerPlus.API.Controls
                     }
                     ListViewItem lvi = new ListViewItem(d.Name, smlist.Images.Count - 1);
                     lvi.SubItems.Add(d.LastWriteTime.ToString());
-                    lvi.SubItems.Add(FileFunctions.GetStringResourceFromFile("@shell32.dll,-10152"));
+                    lvi.SubItems.Add(Extra.StringResource.GetStringResourceFromFile("@shell32.dll,-10152").ToString());
                     lvfs.Items.Add(lvi);
                 }
 
@@ -130,11 +134,18 @@ namespace ExplorerPlus.API.Controls
                     //Anhand der Erweiterung schauen, ob es eine Verknüpfung ist oder nicht
                     try
                     {
-                        if (file.Extension == ".lnk")
+                        try
                         {
-                            smlist.Images.Add(FilesystemIcons.GetSmallIcon(FileFunctions.GetShortcutPath(file.FullName)));
+                            if (file.Extension == ".lnk")
+                            {
+                                smlist.Images.Add(FilesystemIcons.GetSmallIcon(FileFunctions.GetShortcutPath(file.FullName)));
+                            }
+                            else
+                            {
+                                smlist.Images.Add(FilesystemIcons.GetSmallIcon(file.FullName));
+                            }
                         }
-                        else
+                        catch
                         {
                             smlist.Images.Add(FilesystemIcons.GetIconByExtension_x16(file.Extension));
                         }
@@ -181,20 +192,23 @@ namespace ExplorerPlus.API.Controls
         private void lvfs_DoubleClick(object sender, EventArgs e)
         {
             undopos = 0;
+            undolist = null;
+            btnback.Enabled = true;
+            btnforward.Enabled = false;
 
             //Das Event, was beim Doppelklick aufgeführt wird, wird danach entschieden, ob es ein Ordner ist oder eine Exe. Wenn man bei "" war, wird sofort der Root-Directory geöffnet
             if (_aktpfad == "")
             {
-                AddRecentPath(_aktpfad);
                 _aktpfad = lvfs.SelectedItems[0].Text.Substring(0, 2) + @"\"; //Pfad für Root einfügen
+                AddRecentPath(_aktpfad);
                 ShowPathContent();
             }
             else
             {
-                if (lvfs.SelectedItems[0].SubItems[1].Text == FileFunctions.GetStringResourceFromFile("@shell32.dll,-10152")) //Wenn es ein ordner ist, soll im Ordner hochgegangen werden
+                if (lvfs.SelectedItems[0].SubItems[2].Text == Extra.StringResource.GetStringResourceFromFile("@shell32.dll,-10152")) //Wenn es ein ordner ist, soll im Ordner hochgegangen werden
                 {
-                    AddRecentPath(_aktpfad);
                     _aktpfad += lvfs.SelectedItems[0].Text + @"\"; //Pfad um Ordner erweitern
+                    AddRecentPath(_aktpfad);
                     ShowPathContent();
                 }
                 else
@@ -210,23 +224,22 @@ namespace ExplorerPlus.API.Controls
         {
             //Bei diesem Verfahren werden alle Einträge nach hinten geschoben. Wenn der 10. Undo durchgeführt wurde
             //wird dieser blockiert
-            for (int i = 9; i > 0; i--)
-            {
-                recentpaths[i] = recentpaths[i - 1];
-            }
-            recentpaths[0] = recentpath; 
+            if (recentpaths.Count == 10)
+                recentpaths.RemoveAt(9); //letzten entfernen
+
+            recentpaths.Insert(0, recentpath);
         }
 
-        private void UpdateComboList()
-        {
-            //Die Daten aus der Liste in die ComboBox übertragen
-            cbrecentpaths.Items.Clear();
+        //private void UpdateComboList()
+        //{
+        //    //Die Daten aus der Liste in die ComboBox übertragen
+        //    cbrecentpaths.Items.Clear();
 
-            for (int i = 0; i < 10; i++)
-            {
-                cbrecentpaths.Items.Add(recentpaths[i]);
-            }
-        }
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        cbrecentpaths.Items.Add(recentpaths[i]);
+        //    }
+        //}
 
         private void cbrecentpaths_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -240,7 +253,131 @@ namespace ExplorerPlus.API.Controls
 
         private void btnback_Click(object sender, EventArgs e)
         {
+            //Jedes Mal, wenn der Button gedrückt wird, wird undopos um 1 erhöht (bis er auf 9 ist)
+            //Eine zweite Liste läuft mit und wenn ein Ordner in der Liste ausgewählt wird oder ein Pfad eingegeben wird, dann soll die Liste
+            //gecleart werden. Bei jedem Sprung wird auch die Recentpaths-Liste weiter geführt
+            if (undopos == 0 && undolist == null)
+            {
+                undolist = new List<string>(10);
+                //Liste kopieren
+                for (int i = 0; i < recentpaths.Count; i++)
+                    undolist.Add(recentpaths[i]);
 
+                undopos++;
+                _aktpfad = undolist[undopos];
+                AddRecentPath(_aktpfad);
+                ShowPathContent();
+                btnforward.Enabled = true;
+            }
+            else
+            {
+                if (undopos == 8)
+                    btnback.Enabled = false;
+
+                undopos++;
+                _aktpfad = undolist[undopos];
+                AddRecentPath(_aktpfad);
+                ShowPathContent();
+                btnforward.Enabled = true;
+            }
+        }
+
+        private void btnforward_Click(object sender, EventArgs e)
+        {
+            if (undopos == 1)
+                btnforward.Enabled = false;
+
+            undopos--;
+            _aktpfad = undolist[undopos];
+            AddRecentPath(_aktpfad);
+            ShowPathContent();
+            btnback.Enabled = true;
+        }
+
+        private void cbrecentpaths_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Wenn Enter gedrückt wurde, soll der Pfad überprüft werden. Wenn dieser in Ordnung ist, darf dieser aufgerufen werden
+            if (e.KeyCode == Keys.Enter )
+            {
+                e.SuppressKeyPress = true;
+                if (Directory.Exists(cbrecentpaths.Text ))
+                {
+                    if (cbrecentpaths.Text.Substring(cbrecentpaths.Text.Length - 1, 1) != @"\")
+                        cbrecentpaths.Text += @"\";
+                    undopos = 0;
+                    undolist = null;
+                    btnback.Enabled = true;
+                    btnforward.Enabled = false;
+                    _aktpfad = cbrecentpaths.Text;
+                    AddRecentPath(_aktpfad);
+                    ShowPathContent();
+                }
+                else
+                {
+                    MessageBox.Show("Der Pfad " + cbrecentpaths.Text + " ist nicht verfügbar oder der Zugriff wurde verweigert", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cbrecentpaths.Text = _aktpfad; 
+                    return;
+                }
+            }
+        }
+
+        private void btnadd_Click(object sender, EventArgs e)
+        {
+            //Ein neuer Ordner wird erstellt
+            //In einer InputBox muss der Name des Ordners angegeben werden
+            string foldername = Microsoft.VisualBasic.Interaction.InputBox("Ordnername", "Neuen Ordner erstellen", "Neuer Ordner");
+
+            //Ein DirectoryInfo-Objekt erstellen, damit der Ordner erstellt werden kann
+            DirectoryInfo info = new DirectoryInfo(_aktpfad);
+            info.CreateSubdirectory(foldername); //Ordner erstellen
+            ShowPathContent();
+        }
+
+        private void btndelete_Click(object sender, EventArgs e)
+        {
+            if (lvfs.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Wählen Sie Elemente aus, die gelöscht werden sollen");
+                return;
+            }
+            else
+            {
+                if (lvfs.SelectedItems.Count == 1)
+                {
+                    if (MessageBox.Show("Soll das 1 Element wirklich gelöscht werden?", "Warnung", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+                else
+                    if (MessageBox.Show("Sollen die " + lvfs.SelectedItems.Count.ToString() + " Elemente wirklich gelöscht werden?", "Warnung", MessageBoxButtons.YesNo) == DialogResult.No)
+                        return;
+            }
+
+            //Löschvorgang beginnt.
+            for (int i = 0; i < lvfs.SelectedItems.Count; i++)
+            {
+                try //Manche Dateien verweigern ggf. einen Löschvorgang
+                {
+                    if (lvfs.SelectedItems[i].SubItems[2].Text == Extra.StringResource.GetStringResourceFromFile("@shell32.dll,-10152"))
+                        Directory.Delete(_aktpfad + lvfs.SelectedItems[i].Text);
+                    else
+                        File.Delete(_aktpfad + lvfs.SelectedItems[i].Text);
+                    lvfs.SelectedItems[i].Remove(); //Nachladen verhindern
+                }
+                catch
+                {
+
+                }
+            }   
+        }
+
+        private void lvfs_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                btndelete_Click(btndelete, null); //Die selbe Methode verwenden
+            }
         }
     }
 }

@@ -124,6 +124,7 @@
             // 
             // btndelete
             // 
+            this.btndelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btndelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btndelete.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btndelete.FlatAppearance.BorderSize = 0;
@@ -143,6 +144,7 @@
             // 
             // btnnewfolder
             // 
+            this.btnnewfolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnnewfolder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnnewfolder.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnnewfolder.FlatAppearance.BorderSize = 0;

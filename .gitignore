@@ -12,3 +12,4 @@ Properties
 *.jpg
 *.txt
 *.log
+*.Designer.cs

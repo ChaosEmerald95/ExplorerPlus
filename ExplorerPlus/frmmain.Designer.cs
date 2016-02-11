@@ -41,8 +41,10 @@
             this.statuspanel = new System.Windows.Forms.Panel();
             this.splitter3 = new System.Windows.Forms.Splitter();
             this.explorerplusfv = new ExplorerPlus.API.Controls.ExplorerPlusFileView();
+            this.explorerPlusFilesystemList1 = new ExplorerPlus.API.Controls.ExplorerPlusFilesystemList();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.formpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -119,6 +121,7 @@
             // formpanel
             // 
             this.formpanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.formpanel.Controls.Add(this.explorerPlusFilesystemList1);
             this.formpanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.formpanel.Location = new System.Drawing.Point(943, 24);
             this.formpanel.Name = "formpanel";
@@ -161,6 +164,15 @@
             this.explorerplusfv.TabIndex = 12;
             this.explorerplusfv.FileListLoaded += new ExplorerPlus.API.Controls.ExplorerPlusControlsHandler(this.explorerplusfv_FileListLoaded);
             // 
+            // explorerPlusFilesystemList1
+            // 
+            this.explorerPlusFilesystemList1.AktuellerPfad = "";
+            this.explorerPlusFilesystemList1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.explorerPlusFilesystemList1.Location = new System.Drawing.Point(0, 0);
+            this.explorerPlusFilesystemList1.Name = "explorerPlusFilesystemList1";
+            this.explorerPlusFilesystemList1.Size = new System.Drawing.Size(174, 518);
+            this.explorerPlusFilesystemList1.TabIndex = 0;
+            // 
             // frmmain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,6 +194,7 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.formpanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,6 +215,7 @@
         private API.Controls.ExplorerPlusFileView explorerplusfv;
         private System.Windows.Forms.Splitter splitter4;
         private API.Controls.ExplorerPlusFilesystemView explorerplusfstv;
+        private API.Controls.ExplorerPlusFilesystemList explorerPlusFilesystemList1;
     }
 }
 

@@ -32,8 +32,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnforward = new System.Windows.Forms.Button();
             this.btnback = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btndelete = new System.Windows.Forms.Button();
+            this.btnadd = new System.Windows.Forms.Button();
             this.cbrecentpaths = new System.Windows.Forms.ComboBox();
             this.lvfs = new System.Windows.Forms.ListView();
             this.chname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -47,8 +47,8 @@
             // 
             this.panel1.Controls.Add(this.btnforward);
             this.panel1.Controls.Add(this.btnback);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btndelete);
+            this.panel1.Controls.Add(this.btnadd);
             this.panel1.Controls.Add(this.cbrecentpaths);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -58,15 +58,19 @@
             // 
             // btnforward
             // 
+            this.btnforward.FlatAppearance.BorderSize = 0;
+            this.btnforward.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnforward.Image = ((System.Drawing.Image)(resources.GetObject("btnforward.Image")));
-            this.btnforward.Location = new System.Drawing.Point(33, 1);
+            this.btnforward.Location = new System.Drawing.Point(26, 1);
             this.btnforward.Name = "btnforward";
             this.btnforward.Size = new System.Drawing.Size(26, 23);
             this.btnforward.TabIndex = 2;
             this.btnforward.UseVisualStyleBackColor = true;
+            this.btnforward.Click += new System.EventHandler(this.btnforward_Click);
             // 
             // btnback
             // 
+            this.btnback.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnback.Image = ((System.Drawing.Image)(resources.GetObject("btnback.Image")));
             this.btnback.Location = new System.Drawing.Point(3, 1);
             this.btnback.Name = "btnback";
@@ -75,36 +79,41 @@
             this.btnback.UseVisualStyleBackColor = true;
             this.btnback.Click += new System.EventHandler(this.btnback_Click);
             // 
-            // button4
+            // btndelete
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(354, 1);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(26, 23);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "button1";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btndelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btndelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btndelete.Image = ((System.Drawing.Image)(resources.GetObject("btndelete.Image")));
+            this.btndelete.Location = new System.Drawing.Point(354, 1);
+            this.btndelete.Name = "btndelete";
+            this.btndelete.Size = new System.Drawing.Size(26, 23);
+            this.btndelete.TabIndex = 1;
+            this.btndelete.UseVisualStyleBackColor = true;
+            this.btndelete.Click += new System.EventHandler(this.btndelete_Click);
             // 
-            // button1
+            // btnadd
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(328, 1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(26, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnadd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnadd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnadd.Image = ((System.Drawing.Image)(resources.GetObject("btnadd.Image")));
+            this.btnadd.Location = new System.Drawing.Point(329, 1);
+            this.btnadd.Name = "btnadd";
+            this.btnadd.Size = new System.Drawing.Size(26, 23);
+            this.btnadd.TabIndex = 1;
+            this.btnadd.UseVisualStyleBackColor = true;
+            this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
             // 
             // cbrecentpaths
             // 
             this.cbrecentpaths.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbrecentpaths.FormattingEnabled = true;
-            this.cbrecentpaths.Location = new System.Drawing.Point(65, 2);
+            this.cbrecentpaths.Location = new System.Drawing.Point(58, 2);
             this.cbrecentpaths.Name = "cbrecentpaths";
-            this.cbrecentpaths.Size = new System.Drawing.Size(263, 21);
+            this.cbrecentpaths.Size = new System.Drawing.Size(270, 21);
             this.cbrecentpaths.TabIndex = 0;
             this.cbrecentpaths.SelectedIndexChanged += new System.EventHandler(this.cbrecentpaths_SelectedIndexChanged);
+            this.cbrecentpaths.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbrecentpaths_KeyDown);
             // 
             // lvfs
             // 
@@ -121,6 +130,7 @@
             this.lvfs.UseCompatibleStateImageBehavior = false;
             this.lvfs.View = System.Windows.Forms.View.Details;
             this.lvfs.DoubleClick += new System.EventHandler(this.lvfs_DoubleClick);
+            this.lvfs.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvfs_KeyDown);
             // 
             // chname
             // 
@@ -154,7 +164,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnadd;
         private System.Windows.Forms.ComboBox cbrecentpaths;
         private System.Windows.Forms.ListView lvfs;
         private System.Windows.Forms.Button btnforward;
@@ -163,6 +173,6 @@
         private System.Windows.Forms.ColumnHeader chlastchange;
         private System.Windows.Forms.ColumnHeader chtype;
         private System.Windows.Forms.ColumnHeader chsize;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btndelete;
     }
 }

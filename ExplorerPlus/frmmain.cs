@@ -26,6 +26,9 @@ namespace ExplorerPlus
         {
             //Den Pfad an ExplorerPlusFileView übergeben, damit die Anzeige für den Pfad geladen werden kann
             explorerplusfv.SelectedPath = path;
+
+            //Nur Testweise
+            explorerPlusFilesystemList1.AktuellerPfad = path;
         }
 
         private void explorerplusfv_FileListLoaded(string path)
