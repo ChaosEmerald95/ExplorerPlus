@@ -93,6 +93,7 @@
     <Compile Include="ExtraFunctions.cs" />
     <Compile Include="FileFunctions.cs" />
     <Compile Include="FilesystemIcons.cs" />
+    <Compile Include="FTP.cs" />
     <Compile Include="LocalNetworkFunctions.cs" />
     <Compile Include="PingClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
