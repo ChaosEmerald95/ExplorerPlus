@@ -15,6 +15,8 @@ namespace ExplorerPlus.API
         public const string DRIVE_VOLUMELABEL_STD_EXT = "USB-Laufwerk";
         public const string DRIVE_VOLUMELABEL_STD_OPT = "Optisches Laufwerk";
         public const string DRIVE_VOLUMELABEL_STD_NET = "Netzlaufwerk";
+        public const string DRIVE_VOLUMELABEL_STD_HDD_DESC = "Festplatten-Laufwerk";
+        public const string DRIVE_VOLUMELABEL_STD_SSD_DESC = "SSD-Laufwerk";
 
         //Fürs Management
         private static ManagementClass driveinfodata = new ManagementClass("Win32_DiskDrive"); //Stellt Informationen zur Hardware bereit
@@ -142,6 +144,35 @@ namespace ExplorerPlus.API
                 }
             }
             return null; //Sollte in der Regel nicht vorkommen
+        }
+
+        /// <summary>
+        /// Prüft, ob das angegebene Laufwerk eine SSD ist
+        /// </summary>
+        /// <param name="driveletter">Der Laufwerksbuchstabe</param>
+        /// <returns></returns>
+        public static bool IsSSD(char driveletter)
+        {
+            int di = GetPartitionData(driveletter.ToString())[0];
+            string res = SSD.HasNoSeekPenalty((byte)di); //Result erhalten
+            if (res.Contains("Result") == true && res.Contains("NO SEEK"))
+                return true; //Es ist eine SSD
+            else
+                return false; //Es ist keine SSD
+        }
+
+        /// <summary>
+        /// Prüft, ob das angegebene Laufwerk eine SSD ist
+        /// </summary>
+        /// <param name="diskindex">Der Drive-Index</param>
+        /// <returns></returns>
+        public static bool IsSSD(int diskindex)
+        {
+            string res = SSD.HasNoSeekPenalty((byte)diskindex); //Result erhalten
+            if (res.Contains("Result") == true && res.Contains("NO SEEK"))
+                return true; //Es ist eine SSD
+            else
+                return false; //Es ist keine SSD
         }
         #endregion
 

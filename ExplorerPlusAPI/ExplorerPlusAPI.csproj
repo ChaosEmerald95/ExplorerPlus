@@ -101,6 +101,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SSD.cs" />
     <Compile Include="WinAPI.cs" />
   </ItemGroup>
   <ItemGroup>
