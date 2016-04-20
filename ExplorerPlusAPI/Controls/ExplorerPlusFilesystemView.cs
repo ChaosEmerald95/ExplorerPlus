@@ -13,7 +13,6 @@ namespace ExplorerPlus.API.Controls
 {
     //Delegates
     public delegate void ExplorerPlusControlsHandler(string path);
-    public delegate void ExplorerPlusFilesystemHandlerEx(string path, int type);
 
     public partial class ExplorerPlusFilesystemView : UserControl
     {

@@ -41,17 +41,15 @@
             this.statuspanel = new System.Windows.Forms.Panel();
             this.splitter3 = new System.Windows.Forms.Splitter();
             this.explorerplusfv = new ExplorerPlus.API.Controls.ExplorerPlusFileView();
-            this.explorerPlusFilesystemList1 = new ExplorerPlus.API.Controls.ExplorerPlusFilesystemList();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.formpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1117, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1293, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -60,9 +58,9 @@
             this.statusStrip1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslbelementcount});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 542);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 649);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1117, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1293, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -80,7 +78,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 518);
+            this.panel1.Size = new System.Drawing.Size(200, 625);
             this.panel1.TabIndex = 6;
             // 
             // explorerplusfstv
@@ -88,14 +86,14 @@
             this.explorerplusfstv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.explorerplusfstv.Location = new System.Drawing.Point(0, 0);
             this.explorerplusfstv.Name = "explorerplusfstv";
-            this.explorerplusfstv.Size = new System.Drawing.Size(200, 338);
+            this.explorerplusfstv.Size = new System.Drawing.Size(200, 445);
             this.explorerplusfstv.TabIndex = 2;
             this.explorerplusfstv.SelectedPathChanged += new ExplorerPlus.API.Controls.ExplorerPlusControlsHandler(this.explorerplusfstv_SelectedPathChanged);
             // 
             // splitter4
             // 
             this.splitter4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter4.Location = new System.Drawing.Point(0, 338);
+            this.splitter4.Location = new System.Drawing.Point(0, 445);
             this.splitter4.Name = "splitter4";
             this.splitter4.Size = new System.Drawing.Size(200, 3);
             this.splitter4.TabIndex = 1;
@@ -104,7 +102,7 @@
             // explorerplusnfs
             // 
             this.explorerplusnfs.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.explorerplusnfs.Location = new System.Drawing.Point(0, 341);
+            this.explorerplusnfs.Location = new System.Drawing.Point(0, 448);
             this.explorerplusnfs.Name = "explorerplusnfs";
             this.explorerplusnfs.Size = new System.Drawing.Size(200, 177);
             this.explorerplusnfs.TabIndex = 0;
@@ -114,43 +112,42 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(200, 24);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 518);
+            this.splitter1.Size = new System.Drawing.Size(3, 625);
             this.splitter1.TabIndex = 7;
             this.splitter1.TabStop = false;
             // 
             // formpanel
             // 
             this.formpanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.formpanel.Controls.Add(this.explorerPlusFilesystemList1);
             this.formpanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.formpanel.Location = new System.Drawing.Point(943, 24);
+            this.formpanel.Location = new System.Drawing.Point(1099, 24);
             this.formpanel.Name = "formpanel";
-            this.formpanel.Size = new System.Drawing.Size(174, 518);
+            this.formpanel.Size = new System.Drawing.Size(194, 625);
             this.formpanel.TabIndex = 8;
             // 
             // splitter2
             // 
             this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.splitter2.Location = new System.Drawing.Point(940, 24);
+            this.splitter2.Location = new System.Drawing.Point(1096, 24);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(3, 518);
+            this.splitter2.Size = new System.Drawing.Size(3, 625);
             this.splitter2.TabIndex = 9;
             this.splitter2.TabStop = false;
             // 
             // statuspanel
             // 
             this.statuspanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.statuspanel.Location = new System.Drawing.Point(203, 405);
+            this.statuspanel.Location = new System.Drawing.Point(203, 472);
             this.statuspanel.Name = "statuspanel";
-            this.statuspanel.Size = new System.Drawing.Size(737, 137);
+            this.statuspanel.Size = new System.Drawing.Size(893, 177);
             this.statuspanel.TabIndex = 10;
             // 
             // splitter3
             // 
             this.splitter3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter3.Location = new System.Drawing.Point(203, 402);
+            this.splitter3.Location = new System.Drawing.Point(203, 469);
             this.splitter3.Name = "splitter3";
-            this.splitter3.Size = new System.Drawing.Size(737, 3);
+            this.splitter3.Size = new System.Drawing.Size(893, 3);
             this.splitter3.TabIndex = 11;
             this.splitter3.TabStop = false;
             // 
@@ -160,25 +157,17 @@
             this.explorerplusfv.Location = new System.Drawing.Point(203, 24);
             this.explorerplusfv.Name = "explorerplusfv";
             this.explorerplusfv.SelectedPath = "";
-            this.explorerplusfv.Size = new System.Drawing.Size(737, 378);
+            this.explorerplusfv.Size = new System.Drawing.Size(893, 445);
             this.explorerplusfv.TabIndex = 12;
-            this.explorerplusfv.FileListLoaded += new ExplorerPlus.API.Controls.ExplorerPlusControlsHandler(this.explorerplusfv_FileListLoaded);
-            // 
-            // explorerPlusFilesystemList1
-            // 
-            this.explorerPlusFilesystemList1.AktuellerPfad = "";
-            this.explorerPlusFilesystemList1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.explorerPlusFilesystemList1.Location = new System.Drawing.Point(0, 0);
-            this.explorerPlusFilesystemList1.Name = "explorerPlusFilesystemList1";
-            this.explorerPlusFilesystemList1.Size = new System.Drawing.Size(174, 518);
-            this.explorerPlusFilesystemList1.TabIndex = 0;
+            this.explorerplusfv.SelectedFileClick += new ExplorerPlus.API.Controls.ExplorerPlusFilesystemHandlerEx(this.explorerplusfv_SelectedFileClick);
+            this.explorerplusfv.LoadedPath += new ExplorerPlus.API.Controls.ExplorerPlusControlsHandler(this.explorerplusfv_FileListLoaded);
             // 
             // frmmain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1117, 564);
+            this.ClientSize = new System.Drawing.Size(1293, 671);
             this.Controls.Add(this.explorerplusfv);
             this.Controls.Add(this.splitter3);
             this.Controls.Add(this.statuspanel);
@@ -194,7 +183,6 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.formpanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,7 +203,6 @@
         private API.Controls.ExplorerPlusFileView explorerplusfv;
         private System.Windows.Forms.Splitter splitter4;
         private API.Controls.ExplorerPlusFilesystemView explorerplusfstv;
-        private API.Controls.ExplorerPlusFilesystemList explorerPlusFilesystemList1;
     }
 }
 

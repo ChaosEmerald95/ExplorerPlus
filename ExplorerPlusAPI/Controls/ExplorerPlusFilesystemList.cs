@@ -82,7 +82,7 @@ namespace ExplorerPlus.API.Controls
                         else
                             lvi.SubItems.Add("Unbekannter Laufwerkstyp");
 
-                        lvi.SubItems.Add(drive.TotalSize.ToString());
+                        lvi.SubItems.Add(ExtraFunctions.UnitChange(drive.TotalSize));
                         lvfs.Items.Add(lvi);
                     }
                     else

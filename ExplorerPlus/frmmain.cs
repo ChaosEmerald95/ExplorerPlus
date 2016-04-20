@@ -26,9 +26,6 @@ namespace ExplorerPlus
         {
             //Den Pfad an ExplorerPlusFileView übergeben, damit die Anzeige für den Pfad geladen werden kann
             explorerplusfv.SelectedPath = path;
-
-            //Nur Testweise
-            explorerPlusFilesystemList1.AktuellerPfad = path;
         }
 
         private void explorerplusfv_FileListLoaded(string path)
@@ -44,6 +41,26 @@ namespace ExplorerPlus
         {
             //Den Pfad an ExplorerPlusFileView übergeben, damit die Anzeige für den Pfad geladen werden kann
             explorerplusfv.SelectedPath = path;
+        }
+
+        private void explorerplusfv_SelectedFileClick(string path, ExplorerPlusFileView.ENTRY_TYPE type)
+        {
+            //Anhand des Paths, der zurückgegeben wird, soll 
+            switch (type)
+            {
+                case ExplorerPlusFileView.ENTRY_TYPE.Drive:
+                    ExplorerPlusStatusDrive sdr = new ExplorerPlusStatusDrive(Convert.ToChar(path.Substring(0, 1)));
+                    sdr.Dock = DockStyle.Fill;
+                    statuspanel.Controls.Clear();
+                    statuspanel.Controls.Add(sdr);
+                    break;
+                case ExplorerPlusFileView.ENTRY_TYPE.Directory:
+                    ExplorerPlusStatusDirectory sd = new ExplorerPlusStatusDirectory(path);
+                    sd.Dock = DockStyle.Fill;
+                    statuspanel.Controls.Clear();
+                    statuspanel.Controls.Add(sd);
+                    break;
+            }
         }
     }
 }

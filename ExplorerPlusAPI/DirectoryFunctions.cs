@@ -29,6 +29,8 @@ namespace ExplorerPlus.API
         /// <summary>
         /// Gibt die Größe des Ordners in Byte zurück
         /// Quelle: http://www.freevbcode.com/ShowCode.asp?ID=4287
+        /// Sollte in einem zusätzlichen Thread ausgeführt werden, damit das Programm nicht
+        /// ausgebremst wird
         /// </summary>
         /// <param name="DirPath"></param>
         /// <param name="IncludeSubFolders"></param>
@@ -69,6 +71,19 @@ namespace ExplorerPlus.API
             {
             }
             return lngDirSize;
+        }
+
+        /// <summary>
+        /// Prüft, ob am Ende des Pfades der Backslash vorhanden ist. Wenn nicht, wird dieser angehangen
+        /// </summary>
+        /// <param name="dirpath">Der zu überprüfende Ordnerpfad</param>
+        /// <returns></returns>
+        public static string CorrectPath(string dirpath)
+        {
+            if (dirpath.Substring(dirpath.Length - 1, 1) != @"\")
+                return dirpath + @"\";
+            else
+                return dirpath;
         }
     }
 }

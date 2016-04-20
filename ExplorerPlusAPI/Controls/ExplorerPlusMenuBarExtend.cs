@@ -27,6 +27,21 @@ namespace ExplorerPlus.API.Controls
             InitializeComponent();
         }
 
+        public bool EnableBackBtn
+        {
+            set { button3.Enabled = value; }
+        }
+
+        public bool EnableForwardBtn
+        {
+            set { button2.Enabled = value; }
+        }
+
+        public string MenuBarURLText
+        {
+            set { cbfolderbar.Text = value; }
+        }
+
         private void btnback_Click(object sender, EventArgs e)
         {
             if (MenuUndoButtonClicked != null)

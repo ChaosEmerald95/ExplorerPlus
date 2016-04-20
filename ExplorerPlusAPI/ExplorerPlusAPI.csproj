@@ -82,6 +82,12 @@
     <Compile Include="Controls\ExplorerPlusNetworkFilesystem.Designer.cs">
       <DependentUpon>ExplorerPlusNetworkFilesystem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ExplorerPlusStatusDirectory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExplorerPlusStatusDirectory.Designer.cs">
+      <DependentUpon>ExplorerPlusStatusDirectory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ExplorerPlusStatusDrive.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ExplorerPlusNetworkFilesystem.resx">
       <DependentUpon>ExplorerPlusNetworkFilesystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ExplorerPlusStatusDirectory.resx">
+      <DependentUpon>ExplorerPlusStatusDirectory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ExplorerPlusStatusDrive.resx">
       <DependentUpon>ExplorerPlusStatusDrive.cs</DependentUpon>

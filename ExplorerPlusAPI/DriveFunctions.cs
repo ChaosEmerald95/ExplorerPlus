@@ -15,7 +15,7 @@ namespace ExplorerPlus.API
         public const string DRIVE_VOLUMELABEL_STD_EXT = "USB-Laufwerk";
         public const string DRIVE_VOLUMELABEL_STD_OPT = "Optisches Laufwerk";
         public const string DRIVE_VOLUMELABEL_STD_NET = "Netzlaufwerk";
-        public const string DRIVE_VOLUMELABEL_STD_HDD_DESC = "Festplatten-Laufwerk";
+        public const string DRIVE_VOLUMELABEL_STD_HDD_DESC = "Festplattenlaufwerk";
         public const string DRIVE_VOLUMELABEL_STD_SSD_DESC = "SSD-Laufwerk";
 
         //Fürs Management

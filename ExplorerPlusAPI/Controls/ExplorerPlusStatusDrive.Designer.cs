@@ -162,7 +162,6 @@
             this.lbsizeges.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbsizeges.Location = new System.Drawing.Point(419, 181);
             this.lbsizeges.Name = "lbsizeges";
-            this.lbsizeges.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbsizeges.Size = new System.Drawing.Size(66, 16);
             this.lbsizeges.TabIndex = 3;
             this.lbsizeges.Text = "lbsizeges";
@@ -174,7 +173,6 @@
             this.lbsizegesbyte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbsizegesbyte.Location = new System.Drawing.Point(272, 181);
             this.lbsizegesbyte.Name = "lbsizegesbyte";
-            this.lbsizegesbyte.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbsizegesbyte.Size = new System.Drawing.Size(92, 16);
             this.lbsizegesbyte.TabIndex = 3;
             this.lbsizegesbyte.Text = "lbsizegesbyte";
@@ -186,7 +184,6 @@
             this.lbsizefree.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbsizefree.Location = new System.Drawing.Point(419, 124);
             this.lbsizefree.Name = "lbsizefree";
-            this.lbsizefree.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbsizefree.Size = new System.Drawing.Size(66, 16);
             this.lbsizefree.TabIndex = 3;
             this.lbsizefree.Text = "lbsizefree";
@@ -198,7 +195,6 @@
             this.lbsizefreebyte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbsizefreebyte.Location = new System.Drawing.Point(272, 124);
             this.lbsizefreebyte.Name = "lbsizefreebyte";
-            this.lbsizefreebyte.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbsizefreebyte.Size = new System.Drawing.Size(92, 16);
             this.lbsizefreebyte.TabIndex = 3;
             this.lbsizefreebyte.Text = "lbsizefreebyte";
@@ -210,7 +206,6 @@
             this.lbsizefilled.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbsizefilled.Location = new System.Drawing.Point(419, 88);
             this.lbsizefilled.Name = "lbsizefilled";
-            this.lbsizefilled.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbsizefilled.Size = new System.Drawing.Size(71, 16);
             this.lbsizefilled.TabIndex = 3;
             this.lbsizefilled.Text = "lbsizefilled";
@@ -222,7 +217,6 @@
             this.lbsizefilledbyte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbsizefilledbyte.Location = new System.Drawing.Point(272, 88);
             this.lbsizefilledbyte.Name = "lbsizefilledbyte";
-            this.lbsizefilledbyte.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbsizefilledbyte.Size = new System.Drawing.Size(97, 16);
             this.lbsizefilledbyte.TabIndex = 3;
             this.lbsizefilledbyte.Text = "lbsizefilledbyte";
