@@ -85,5 +85,22 @@ namespace ExplorerPlus.API
             else
                 return dirpath;
         }
+
+        /// <summary>
+        /// Gibt den Parent-Pfad des Verzeichnisses zurück.
+        /// </summary>
+        /// <param name="directorypath">Das Verzeichnis, wo der Parent-Pfad ermittelt werden soll</param>
+        /// <returns></returns>
+        public static string GetParentPath(string directorypath)
+        {
+            if (directorypath.Substring(directorypath.Length - 1, 1) == @"\") //Wenn das letzte Zeichen ein "\" ist, soll es entfernt werden
+                directorypath = directorypath.Substring(0, directorypath.Length - 1);
+
+            int pathbreak = directorypath.LastIndexOf(@"\"); //Die letzte Position des Zeichens "\" erhalten
+            if (pathbreak == -1)
+                return directorypath;
+            else
+                return directorypath.Substring(0, pathbreak + 1);
+        }
     }
 }

@@ -123,27 +123,19 @@ namespace ExplorerPlus.API.Controls
                             }
 
                             //Edit 05.01: Nun prüfen, ob dieser Ordner weitere Unterordner hat
+                            //Edit 28.04: Code optimiert
                             try
                             {
-                                DirectoryInfo dtemp = new DirectoryInfo(d.FullName);
-                                if (dtemp.GetDirectories().Length > 0)
-                                {
+                                if (d.GetDirectories().Length > 0)
                                     n1.Nodes.Add(TREENODE_DIRSUB);
-                                }
                             }
                             catch { }
 
                             tn.Nodes.Add(n1);
                         }
-
-                        //Am Ende muss der Node .dirsub gelöscht werden
-                        tn.Nodes.RemoveAt(0);
                     }
-                    else
-                    {
-                        //Wenn der Ordner keine Unterordner hat, dann kann der TreeNode .dirsub sofort gelöscht werden
-                        tn.Nodes.RemoveAt(0);
-                    }
+                    //Wenn der Ordner keine Unterordner hat, dann kann der TreeNode .dirsub sofort gelöscht werden
+                    tn.Nodes.RemoveAt(0);
 
                     //Nun müssen noch alle Ausnahmen entfernt werden. Es fängt bei den versteckten Ordnern an
 
@@ -166,13 +158,10 @@ namespace ExplorerPlus.API.Controls
             string text = "";
             //Falls es ein Drive ist
             if (nextnode.Level == 0)
-            {
-                text = treenode.Text.Substring(0, 2) + DS;
-                return text;
-            }
-            else {
+               return treenode.Text.Substring(0, 2) + DS;
+            else
                 text = treenode.Text + DS;
-            }
+
             while (nextnode.Parent != null)
             {
                 nextnode = nextnode.Parent;
@@ -182,9 +171,8 @@ namespace ExplorerPlus.API.Controls
                     break;
                 }
                 else
-                {
                     text = nextnode.Text + DS + text;
-                }
+
             }
             return text;
         }
