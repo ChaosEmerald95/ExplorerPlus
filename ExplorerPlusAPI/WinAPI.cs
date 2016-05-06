@@ -41,6 +41,10 @@ namespace ExplorerPlus.API
         [DllImport("Netapi32.dll", CharSet = CharSet.Unicode)]
         public static extern int NetShareEnum(StringBuilder ServerName, int level, ref IntPtr bufPtr, uint prefmaxlen, ref int entriesread, ref int totalentries, ref int resume_handle);
 
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
+        public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr w, IntPtr l);
+
+
         #region Structures
         public struct SHFILEINFO
         {

@@ -212,5 +212,74 @@ namespace ExplorerPlus.API
             Array.Reverse(c);
             return new string(c);
         }
+
+        /// <summary>
+        /// Gibt einen Text als gekürzte Variante aus
+        /// </summary>
+        /// <param name="text">Der Text, der gekürzt werden soll</param>
+        /// <param name="maxlength">Die maximale Länge des Textes</param>
+        /// <param name="fromend">Wenn auf true, dann wird vom Anfang der Text mit ... abgekürzt. Wenn auf false, dann wird am Ende des Textes mit ... abgekürzt</param>
+        /// <returns></returns>
+        public static string ShortText(string text, int maxlength, bool fromend = false)
+        {
+            if (text.Length < maxlength) return text; //Wenn der Text noch im Rahmen ist
+
+            if (fromend)
+            {
+                return "..." + text.Substring(text.Length - maxlength, maxlength);
+            }
+            else
+            {
+                return text.Substring(0, maxlength) + "...";
+            }
+        }
+
+        public static string TimeConverter(int seconds)
+        {
+            int minutes, hours;
+            if (seconds < 60)
+            {
+                if (seconds == 1)
+                    return "1 Sekunde";
+                else
+                    return seconds.ToString() + " Sekunden";
+            }
+
+            minutes = (int)Math.Floor((double)seconds / 60);
+            if (minutes < 60)
+            {
+                string msga;
+                if (minutes == 1)
+                    msga = "1 Minute";
+                else
+                    msga = minutes.ToString() + " Minuten";
+
+                if (seconds - (minutes * 60) == 1)
+                    msga += " 1 Sekunde";
+                else if (seconds - (minutes * 60) > 1)
+                    msga += " " + seconds.ToString() + " Sekunden";
+
+                return msga;
+            }
+
+            hours = (int)Math.Floor((double)minutes / 60);
+            string msg;
+            if (hours == 1)
+                msg = "1 Stunde";
+            else
+                msg = hours.ToString() + " Stunden";
+
+            if (minutes - (hours * 60) == 1)
+                msg += " 1 Minute";
+            else if (minutes - (hours * 60) > 1)
+                msg +=  " " + minutes.ToString() + " Sekunden";
+
+            if (seconds - (minutes * 60) == 1)
+                msg += " 1 Sekunde";
+            else if (seconds - (minutes * 60) > 1)
+                msg += " " + seconds.ToString() + " Sekunden";
+
+            return msg;
+        }
     }
 }

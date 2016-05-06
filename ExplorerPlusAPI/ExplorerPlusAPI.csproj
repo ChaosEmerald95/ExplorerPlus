@@ -94,6 +94,13 @@
     <Compile Include="Controls\ExplorerPlusStatusDrive.Designer.cs">
       <DependentUpon>ExplorerPlusStatusDrive.cs</DependentUpon>
     </Compile>
+    <Compile Include="Delegates.cs" />
+    <Compile Include="Dialogs\FileTransferDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FileTransferDialog.Designer.cs">
+      <DependentUpon>FileTransferDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="DirectoryFunctions.cs" />
     <Compile Include="DriveFunctions.cs" />
     <Compile Include="ExtraFunctions.cs" />
@@ -146,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ExplorerPlusStatusDrive.resx">
       <DependentUpon>ExplorerPlusStatusDrive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FileTransferDialog.resx">
+      <DependentUpon>FileTransferDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
