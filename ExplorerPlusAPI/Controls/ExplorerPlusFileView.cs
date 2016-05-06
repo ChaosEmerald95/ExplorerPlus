@@ -11,8 +11,6 @@ using System.IO;
 
 namespace ExplorerPlus.API.Controls
 {
-    public delegate void ExplorerPlusFilesystemHandlerEx(string path, ExplorerPlusFileView.ENTRY_TYPE type);
-
     public partial class ExplorerPlusFileView : UserControl
     {
         private string _selectedpath = "";
@@ -22,16 +20,9 @@ namespace ExplorerPlus.API.Controls
 
         //Events
         public event ExplorerPlusFilesystemHandlerEx SelectedFileClick; //Auch für Ordner gültig
-        public event ExplorerPlusControlsHandler SelectedFileDoubleClickEx;
-        public event ExplorerPlusControlsHandler SelectedFileDoubleClick;
-        public event ExplorerPlusControlsHandler LoadedPath; //Nur verwenden beim Laden des Ordnerinhalts
-
-        public enum ENTRY_TYPE
-        {
-            Drive,
-            Directory,
-            File
-        }
+        public event ExplorerPlusFilesystemHandler SelectedFileDoubleClickEx;
+        public event ExplorerPlusFilesystemHandler SelectedFileDoubleClick;
+        public event ExplorerPlusFilesystemHandler LoadedPath; //Nur verwenden beim Laden des Ordnerinhalts
 
         public ExplorerPlusFileView()
         {

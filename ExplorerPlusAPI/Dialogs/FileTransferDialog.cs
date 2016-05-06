@@ -47,11 +47,8 @@ namespace ExplorerPlus.API.Dialogs
             m_filecount = 1;
             m_destination = destinationdir;
             trans = mode;
-            GetMaxBytesForTransfer();
-            ShowTextInForm();
+            GetMaxBytesForTransfer();           
             m_thrtransfer = new Thread(new ThreadStart(ThreadTransfer));
-            m_thrtransfer.Start();
-            progresstimer.Start(); //Timer starten
         }
 
         public FileTransferDialog(string[] files, string destinationdir, TransferMode mode)
@@ -63,11 +60,8 @@ namespace ExplorerPlus.API.Dialogs
             m_filecount = files.Length;
             m_destination = destinationdir;
             trans = mode;
-            GetMaxBytesForTransfer();
-            ShowTextInForm();
-            m_thrtransfer = new Thread(new ThreadStart(ThreadTransfer));
-            m_thrtransfer.Start();
-            progresstimer.Start(); //Timer starten
+            GetMaxBytesForTransfer();           
+            m_thrtransfer = new Thread(new ThreadStart(ThreadTransfer));           
         }
 
         private void ShowTextInForm()
@@ -185,6 +179,13 @@ namespace ExplorerPlus.API.Dialogs
                 m_gesbytetransfer += new FileInfo(f).Length; //Byte-Größe zu m_gesbytestransfer addieren 
         }
 
+        private void FileTransferDialog_Load(object sender, EventArgs e)
+        {
+            ShowTextInForm();
+            m_thrtransfer.Start();
+            progresstimer.Start(); //Timer starten
+        }
+
         /// <summary>
         /// Die Transfermethode für die Dateien. Die Größe des Byte-Arrays kann in TRANSFER_BYTE_BLOCK_SIZE festgelegt werden
         /// </summary>
@@ -220,7 +221,7 @@ namespace ExplorerPlus.API.Dialogs
             }
         }
 
-        private void SetState(this ProgressBar pBar, ProgressBarColor color)
+        private void SetState(ProgressBar pBar, ProgressBarColor color)
         {
             WinAPI.SendMessage(pBar.Handle, 1040, (IntPtr)color, IntPtr.Zero); //Funktion aus der statischen Klasse "WinAPI" verwenden
         }

@@ -10,10 +10,6 @@ using System.Windows.Forms;
 
 namespace ExplorerPlus.API.Controls
 {
-    //Delegates
-    public delegate void ExplorerPlusControlsMenuHandler();
-    public delegate void ExplorerPlusControlsMenuHandlerEx(string path);
-
     public partial class ExplorerPlusMenuBar : UserControl
     {
         //Events
@@ -21,7 +17,7 @@ namespace ExplorerPlus.API.Controls
         public event ExplorerPlusControlsMenuHandler MenuRedoButtonClicked;
         public event ExplorerPlusControlsMenuHandler MenuReloadButtonClicked;
         public event ExplorerPlusControlsMenuHandler MenuFolderupButtonClicked;
-        public event ExplorerPlusControlsMenuHandlerEx MenuSelectpathChanged;
+        public event ExplorerPlusFilesystemHandler MenuSelectpathChanged;
 
         public ExplorerPlusMenuBar()
         {

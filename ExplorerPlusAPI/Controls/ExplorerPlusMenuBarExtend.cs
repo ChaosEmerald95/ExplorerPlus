@@ -17,10 +17,10 @@ namespace ExplorerPlus.API.Controls
         public event ExplorerPlusControlsMenuHandler MenuRedoButtonClicked;
         public event ExplorerPlusControlsMenuHandler MenuReloadButtonClicked;
         public event ExplorerPlusControlsMenuHandler MenuFolderupButtonClicked;
-        public event ExplorerPlusControlsMenuHandlerEx MenuSelectpathChanged;
+        public event ExplorerPlusFilesystemHandler MenuSelectpathChanged;
         public event ExplorerPlusControlsMenuHandler MenuDeleteFileButtonClicked;
         public event ExplorerPlusControlsMenuHandler MenuNewFolderButtonClicked;
-        public event ExplorerPlusControlsMenuHandlerEx MenuSearchButtonClicked;
+        public event ExplorerPlusFilesystemHandler MenuSearchButtonClicked;
 
         public ExplorerPlusMenuBarExtend()
         {

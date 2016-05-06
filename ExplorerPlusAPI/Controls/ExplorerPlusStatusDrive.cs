@@ -13,7 +13,7 @@ namespace ExplorerPlus.API.Controls
     public partial class ExplorerPlusStatusDrive : UserControl
     {
         //Events
-        public event ExplorerPlusControlsHandler StorageInfoChanged;
+        public event ExplorerPlusFilesystemHandler StorageInfoChanged;
 
         private char driveletter;
 

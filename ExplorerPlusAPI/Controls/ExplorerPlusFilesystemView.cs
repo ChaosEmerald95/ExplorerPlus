@@ -11,9 +11,6 @@ using System.IO;
 
 namespace ExplorerPlus.API.Controls
 {
-    //Delegates
-    public delegate void ExplorerPlusControlsHandler(string path);
-
     public partial class ExplorerPlusFilesystemView : UserControl
     {
         //Konstanten
@@ -21,9 +18,7 @@ namespace ExplorerPlus.API.Controls
         private const string TREENODE_DIRSUB = ".dirsub";
 
         //Events
-        public event ExplorerPlusControlsHandler SelectedPathChanged;
-       
-      
+        public event ExplorerPlusFilesystemHandler SelectedPathChanged;    
 
         private string _selectedpath = "";
         //private bool _showhiddendir = false;

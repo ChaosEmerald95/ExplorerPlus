@@ -16,7 +16,7 @@ namespace ExplorerPlus.API.Controls
 {
     public partial class ExplorerPlusFilesystemList : UserControl
     {
-        public event ExplorerPlusControlsHandler FilesystementySelected;
+        public event ExplorerPlusFilesystemHandler FilesystementySelected;
 
         private string _aktpfad = ""; //Wenn dieser leer ist, sollen die Drives angezeigt werden, bei Ordnern muss IMMER der Backslash am Ende sein
         private List<string> recentpaths; //Liste mit den zuletzt ausgewählten Pfaden

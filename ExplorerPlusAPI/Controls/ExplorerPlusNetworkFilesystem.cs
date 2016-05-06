@@ -21,7 +21,7 @@ namespace ExplorerPlus.API.Controls
         private PingClass pingcl;
 
         //Events
-        public event ExplorerPlusControlsHandler SelectedPathChanged;
+        public event ExplorerPlusFilesystemHandler SelectedPathChanged;
 
         private void TreeViewAddPCElement(TreeNode ip)
         {
