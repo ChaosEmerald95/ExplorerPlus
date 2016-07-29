@@ -27,7 +27,7 @@ namespace ExplorerPlus
             //Den Pfad an ExplorerPlusFileView übergeben, damit die Anzeige für den Pfad geladen werden kann
             explorerplusfv.SelectedPath = path;
             explorerplusmenubar.MenuBarURLText = path;
-            if (explorerplusmenubar.MenuBarURLText.Substring(explorerplusmenubar.MenuBarURLText.Length - 1,1) != @"\") //Wenn das \ noch fehlt, soll dies hinzugefügt werden
+            if (explorerplusmenubar.MenuBarURLText.Length > 0 && explorerplusmenubar.MenuBarURLText.Substring(explorerplusmenubar.MenuBarURLText.Length - 1,1) != @"\") //Wenn das \ noch fehlt, soll dies hinzugefügt werden
                 explorerplusmenubar.MenuBarURLText += @"\";
         }
 
@@ -40,7 +40,7 @@ namespace ExplorerPlus
                 tslbelementcount.Text = explorerplusfv.FileListCount + " Elemente";
 
             explorerplusmenubar.MenuBarURLText = path;
-            if (explorerplusmenubar.MenuBarURLText.Substring(explorerplusmenubar.MenuBarURLText.Length - 1, 1) != @"\") //Wenn das \ noch fehlt, soll dies hinzugefügt werden
+            if (explorerplusmenubar.MenuBarURLText.Length > 0 && explorerplusmenubar.MenuBarURLText.Substring(explorerplusmenubar.MenuBarURLText.Length - 1, 1) != @"\") //Wenn das \ noch fehlt, soll dies hinzugefügt werden
                 explorerplusmenubar.MenuBarURLText += @"\";
         }
 
@@ -49,7 +49,7 @@ namespace ExplorerPlus
             //Den Pfad an ExplorerPlusFileView übergeben, damit die Anzeige für den Pfad geladen werden kann
             explorerplusfv.SelectedPath = path;
             explorerplusmenubar.MenuBarURLText = path;
-            if (explorerplusmenubar.MenuBarURLText.Substring(explorerplusmenubar.MenuBarURLText.Length - 1, 1) != @"\") //Wenn das \ noch fehlt, soll dies hinzugefügt werden
+            if (explorerplusmenubar.MenuBarURLText.Length > 0 && explorerplusmenubar.MenuBarURLText.Substring(explorerplusmenubar.MenuBarURLText.Length - 1, 1) != @"\") //Wenn das \ noch fehlt, soll dies hinzugefügt werden
                 explorerplusmenubar.MenuBarURLText += @"\";
         }
 
@@ -75,7 +75,7 @@ namespace ExplorerPlus
 
         private void explorerplusmenubar_MenuSelectpathChanged(string path)
         {
-            if (explorerplusmenubar.MenuBarURLText.Substring(explorerplusmenubar.MenuBarURLText.Length - 1, 1) != @"\") //Wenn das \ noch fehlt, soll dies hinzugefügt werden
+            if (explorerplusmenubar.MenuBarURLText.Length > 0 && explorerplusmenubar.MenuBarURLText.Substring(explorerplusmenubar.MenuBarURLText.Length - 1, 1) != @"\") //Wenn das \ noch fehlt, soll dies hinzugefügt werden
                 explorerplusmenubar.MenuBarURLText += @"\";
             explorerplusfv.SelectedPath = explorerplusmenubar.MenuBarURLText;
         }

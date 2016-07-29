@@ -49,6 +49,7 @@
             this.cbfolderbar.Name = "cbfolderbar";
             this.cbfolderbar.Size = new System.Drawing.Size(342, 21);
             this.cbfolderbar.TabIndex = 6;
+            this.cbfolderbar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbfolderbar_KeyDown);
             // 
             // btnreload
             // 
@@ -67,6 +68,7 @@
             this.btnreload.TabIndex = 2;
             this.btnreload.Text = "C";
             this.btnreload.UseVisualStyleBackColor = false;
+            this.btnreload.Click += new System.EventHandler(this.btnreload_Click);
             // 
             // button1
             // 
