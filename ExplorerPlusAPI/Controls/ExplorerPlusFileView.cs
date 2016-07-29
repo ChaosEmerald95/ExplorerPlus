@@ -256,7 +256,7 @@ namespace ExplorerPlus.API.Controls
                 _selectedpath = lvfiles.SelectedItems[0].Text.Substring(0, 2) + @"\"; //Pfad für Root einfügen
                 AddRecentPath(_selectedpath);
                 ShowPathContent();
-                SelectedFileDoubleClick?.Invoke(_selectedpath);
+                SelectedFileDoubleClickEx?.Invoke(_selectedpath,ENTRY_TYPE.Drive);
             }
             else
             {
@@ -265,14 +265,12 @@ namespace ExplorerPlus.API.Controls
                     _selectedpath += lvfiles.SelectedItems[0].Text + @"\"; //Pfad um Ordner erweitern
                     AddRecentPath(_selectedpath);
                     ShowPathContent();
-                    SelectedFileDoubleClick?.Invoke(_selectedpath);
+                    SelectedFileDoubleClickEx?.Invoke(_selectedpath, ENTRY_TYPE.Directory);
                 }
                 else
                 {
                     string p = _selectedpath + @"\" + lvfiles.SelectedItems[0].Text; //Pfad zur Exe erhalten
-                    if (SelectedFileDoubleClick != null)
-                        SelectedFileDoubleClick(p);
-                    System.Diagnostics.Debug.Print("File Open");
+                    SelectedFileDoubleClickEx?.Invoke(p, ENTRY_TYPE.File);
                 }
             }         
         }

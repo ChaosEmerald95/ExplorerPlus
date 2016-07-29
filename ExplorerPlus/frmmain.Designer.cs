@@ -36,10 +36,10 @@
             this.formpanel = new System.Windows.Forms.Panel();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.splitter4 = new System.Windows.Forms.Splitter();
-            this.explorerplusfv = new ExplorerPlus.API.Controls.ExplorerPlusFileView();
             this.explorerplusfstv = new ExplorerPlus.API.Controls.ExplorerPlusFilesystemView();
+            this.splitter4 = new System.Windows.Forms.Splitter();
             this.explorerplusnfs = new ExplorerPlus.API.Controls.ExplorerPlusNetworkFilesystem();
+            this.explorerplusfv = new ExplorerPlus.API.Controls.ExplorerPlusFileView();
             this.explorerplusmenubar = new ExplorerPlus.API.Controls.ExplorerPlusMenuBarExtend();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -116,6 +116,15 @@
             this.panel1.Size = new System.Drawing.Size(200, 753);
             this.panel1.TabIndex = 13;
             // 
+            // explorerplusfstv
+            // 
+            this.explorerplusfstv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.explorerplusfstv.Location = new System.Drawing.Point(0, 0);
+            this.explorerplusfstv.Name = "explorerplusfstv";
+            this.explorerplusfstv.Size = new System.Drawing.Size(200, 461);
+            this.explorerplusfstv.TabIndex = 2;
+            this.explorerplusfstv.SelectedPathChanged += new ExplorerPlus.API.ExplorerPlusFilesystemHandler(this.explorerplusfstv_SelectedPathChanged);
+            // 
             // splitter4
             // 
             this.splitter4.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -124,6 +133,15 @@
             this.splitter4.Size = new System.Drawing.Size(200, 3);
             this.splitter4.TabIndex = 1;
             this.splitter4.TabStop = false;
+            // 
+            // explorerplusnfs
+            // 
+            this.explorerplusnfs.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.explorerplusnfs.Location = new System.Drawing.Point(0, 464);
+            this.explorerplusnfs.Name = "explorerplusnfs";
+            this.explorerplusnfs.Size = new System.Drawing.Size(200, 289);
+            this.explorerplusnfs.TabIndex = 0;
+            this.explorerplusnfs.SelectedPathChanged += new ExplorerPlus.API.ExplorerPlusFilesystemHandler(this.explorerplusnfs_SelectedPathChanged);
             // 
             // explorerplusfv
             // 
@@ -134,25 +152,8 @@
             this.explorerplusfv.Size = new System.Drawing.Size(1175, 461);
             this.explorerplusfv.TabIndex = 19;
             this.explorerplusfv.SelectedFileClick += new ExplorerPlus.API.ExplorerPlusFilesystemHandlerEx(this.explorerplusfv_SelectedFileClick);
+            this.explorerplusfv.SelectedFileDoubleClickEx += new ExplorerPlus.API.ExplorerPlusFilesystemHandlerEx(this.explorerplusfv_SelectedFileDoubleClickEx);
             this.explorerplusfv.LoadedPath += new ExplorerPlus.API.ExplorerPlusFilesystemHandler(this.explorerplusfv_FileListLoaded);
-            // 
-            // explorerplusfstv
-            // 
-            this.explorerplusfstv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.explorerplusfstv.Location = new System.Drawing.Point(0, 0);
-            this.explorerplusfstv.Name = "explorerplusfstv";
-            this.explorerplusfstv.Size = new System.Drawing.Size(200, 461);
-            this.explorerplusfstv.TabIndex = 2;
-            this.explorerplusfstv.SelectedPathChanged += new ExplorerPlus.API.ExplorerPlusFilesystemHandler(this.explorerplusfstv_SelectedPathChanged);
-            // 
-            // explorerplusnfs
-            // 
-            this.explorerplusnfs.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.explorerplusnfs.Location = new System.Drawing.Point(0, 464);
-            this.explorerplusnfs.Name = "explorerplusnfs";
-            this.explorerplusnfs.Size = new System.Drawing.Size(200, 289);
-            this.explorerplusnfs.TabIndex = 0;
-            this.explorerplusnfs.SelectedPathChanged += new ExplorerPlus.API.ExplorerPlusFilesystemHandler(this.explorerplusnfs_SelectedPathChanged);
             // 
             // explorerplusmenubar
             // 

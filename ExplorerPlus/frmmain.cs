@@ -81,5 +81,15 @@ namespace ExplorerPlus
                 explorerplusmenubar.MenuBarURLText += @"\";
             explorerplusfv.SelectedPath = explorerplusmenubar.MenuBarURLText;
         }
+
+        private void explorerplusfv_SelectedFileDoubleClickEx(string path, ENTRY_TYPE type)
+        {
+            switch(type)
+            {
+                case ENTRY_TYPE.File: //Wenn es eine Datei ist, soll diese geöffnet werden
+                    System.Diagnostics.Process.Start(path);
+                    break;
+            }
+        }
     }
 }
