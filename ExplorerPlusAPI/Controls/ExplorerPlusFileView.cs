@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 
 namespace ExplorerPlus.API.Controls
 {
@@ -20,7 +15,7 @@ namespace ExplorerPlus.API.Controls
 
         //Events
         public event ExplorerPlusFilesystemHandlerEx SelectedFileClick; //Auch für Ordner gültig
-        public event ExplorerPlusFilesystemHandler SelectedFileDoubleClickEx;
+        public event ExplorerPlusFilesystemHandlerEx SelectedFileDoubleClickEx;
         public event ExplorerPlusFilesystemHandler SelectedFileDoubleClick;
         public event ExplorerPlusFilesystemHandler LoadedPath; //Nur verwenden beim Laden des Ordnerinhalts
 
@@ -51,6 +46,12 @@ namespace ExplorerPlus.API.Controls
         public int FileListCount
         {
             get { return lvfiles.Items.Count; }
+        }
+
+        public void ReloadList()
+        {
+            //Diese Methode soll die Möglichkeit bieten, einfach ShowPathContent() aufzurufen.
+            ShowPathContent();
         }
 
         private void ShowPathContent()
@@ -216,8 +217,7 @@ namespace ExplorerPlus.API.Controls
                 }
             }
 
-            if (LoadedPath != null)
-                LoadedPath(_selectedpath);
+            LoadedPath?.Invoke(_selectedpath);
         }
 
         private void lvfiles_Click(object sender, EventArgs e)
@@ -256,8 +256,7 @@ namespace ExplorerPlus.API.Controls
                 _selectedpath = lvfiles.SelectedItems[0].Text.Substring(0, 2) + @"\"; //Pfad für Root einfügen
                 AddRecentPath(_selectedpath);
                 ShowPathContent();
-                if (SelectedFileDoubleClickEx != null)
-                    SelectedFileDoubleClickEx(_selectedpath);
+                SelectedFileDoubleClick?.Invoke(_selectedpath);
             }
             else
             {
@@ -266,8 +265,7 @@ namespace ExplorerPlus.API.Controls
                     _selectedpath += lvfiles.SelectedItems[0].Text + @"\"; //Pfad um Ordner erweitern
                     AddRecentPath(_selectedpath);
                     ShowPathContent();
-                    if (SelectedFileDoubleClickEx != null)
-                        SelectedFileDoubleClickEx(_selectedpath);
+                    SelectedFileDoubleClick?.Invoke(_selectedpath);
                 }
                 else
                 {
@@ -337,9 +335,7 @@ namespace ExplorerPlus.API.Controls
                 if (lvfiles.SelectedItems.Count == 1)
                 {
                     if (MessageBox.Show("Soll das 1 Element wirklich gelöscht werden?", "Warnung", MessageBoxButtons.YesNo) == DialogResult.No)
-                    {
                         return;
-                    }
                 }
                 else
                     if (MessageBox.Show("Sollen die " + lvfiles.SelectedItems.Count.ToString() + " Elemente wirklich gelöscht werden?", "Warnung", MessageBoxButtons.YesNo) == DialogResult.No)
@@ -347,7 +343,7 @@ namespace ExplorerPlus.API.Controls
             }
 
             //Löschvorgang beginnt.
-            for (int i = 0; i < lvfiles.SelectedItems.Count; i++)
+            for (int i = lvfiles.SelectedItems.Count - 1; i >= 0; i--)
             {
                 try //Manche Dateien verweigern ggf. einen Löschvorgang
                 {
@@ -359,7 +355,6 @@ namespace ExplorerPlus.API.Controls
                 }
                 catch
                 {
-
                 }
             }
         }

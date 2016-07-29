@@ -19,13 +19,16 @@ namespace ExplorerPlus
         public frmmain()
         {
             InitializeComponent();
-            explorerplusnfs.Start();
+            //explorerplusnfs.Start();
         }
 
         private void explorerplusfstv_SelectedPathChanged(string path)
         {
             //Den Pfad an ExplorerPlusFileView übergeben, damit die Anzeige für den Pfad geladen werden kann
             explorerplusfv.SelectedPath = path;
+            explorerplusmenubar.MenuBarURLText = path;
+            if (explorerplusmenubar.MenuBarURLText.Substring(explorerplusmenubar.MenuBarURLText.Length - 1,1) != @"\") //Wenn das \ noch fehlt, soll dies hinzugefügt werden
+                explorerplusmenubar.MenuBarURLText += @"\";
         }
 
         private void explorerplusfv_FileListLoaded(string path)
@@ -35,12 +38,19 @@ namespace ExplorerPlus
                 tslbelementcount.Text = "1 Element";
             else
                 tslbelementcount.Text = explorerplusfv.FileListCount + " Elemente";
+
+            explorerplusmenubar.MenuBarURLText = path;
+            if (explorerplusmenubar.MenuBarURLText.Substring(explorerplusmenubar.MenuBarURLText.Length - 1, 1) != @"\") //Wenn das \ noch fehlt, soll dies hinzugefügt werden
+                explorerplusmenubar.MenuBarURLText += @"\";
         }
 
         private void explorerplusnfs_SelectedPathChanged(string path)
         {
             //Den Pfad an ExplorerPlusFileView übergeben, damit die Anzeige für den Pfad geladen werden kann
             explorerplusfv.SelectedPath = path;
+            explorerplusmenubar.MenuBarURLText = path;
+            if (explorerplusmenubar.MenuBarURLText.Substring(explorerplusmenubar.MenuBarURLText.Length - 1, 1) != @"\") //Wenn das \ noch fehlt, soll dies hinzugefügt werden
+                explorerplusmenubar.MenuBarURLText += @"\";
         }
 
         private void explorerplusfv_SelectedFileClick(string path, ENTRY_TYPE type)
@@ -61,6 +71,13 @@ namespace ExplorerPlus
                     statuspanel.Controls.Add(sd);
                     break;
             }
+        }
+
+        private void explorerplusmenubar_MenuSelectpathChanged(string path)
+        {
+            if (explorerplusmenubar.MenuBarURLText.Substring(explorerplusmenubar.MenuBarURLText.Length - 1, 1) != @"\") //Wenn das \ noch fehlt, soll dies hinzugefügt werden
+                explorerplusmenubar.MenuBarURLText += @"\";
+            explorerplusfv.SelectedPath = explorerplusmenubar.MenuBarURLText;
         }
     }
 }

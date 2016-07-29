@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ExplorerPlus.API
+﻿namespace ExplorerPlus.API
 {
     //Hier kommen nur alle verwendeten Delegates rein. Somit ist noch ein Überblick über 
     //alle Delegates möglich

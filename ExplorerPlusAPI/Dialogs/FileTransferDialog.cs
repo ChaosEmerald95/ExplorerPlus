@@ -15,7 +15,7 @@ namespace ExplorerPlus.API.Dialogs
 {
     public partial class FileTransferDialog : Form
     {
-        private const int TRANSFER_BYTE_BLOCK_SIZE = 512; //So viele Bytes sollen pro Schreiben transferiert werden. Garantiert beste Bewertung der Transfergeschwindigkeit
+        private const int TRANSFER_BYTE_BLOCK_SIZE = 2048; //So viele Bytes sollen pro Schreiben transferiert werden. Garantiert beste Bewertung der Transfergeschwindigkeit
 
         private bool m_ispaused = false; //Ob der Vorgang pausiert ist
         private int m_filecount = 0, m_fileakt = 0; //Dateiangaben
@@ -138,10 +138,14 @@ namespace ExplorerPlus.API.Dialogs
 
         private void progresstimer_Tick(object sender, EventArgs e)
         {
+            m_bytestransfered += m_bytespersec;
             ShowTextInForm();
             m_bytespersec = 0; //Bytes per Second zurücksetzen
             if (m_thrtransfer.IsAlive == false) //Wenn der Thread nicht mehr existiert
+            {
+                progresstimer.Stop();
                 Close();
+            }
         }
 
         private void btnpause_Click(object sender, EventArgs e)
@@ -204,7 +208,9 @@ namespace ExplorerPlus.API.Dialogs
                     dest.Write(buffer, 0, bytesRead);
                     m_bytespersec += bytesRead; //Bytes dazu addieren
                 }
+                source.Close();
             }
+            dest.Close();
         }
         
         /// <summary>

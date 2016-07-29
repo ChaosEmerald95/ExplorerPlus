@@ -39,6 +39,7 @@ namespace ExplorerPlus.API.Controls
 
         public string MenuBarURLText
         {
+            get { return cbfolderbar.Text; }
             set { cbfolderbar.Text = value; }
         }
 
