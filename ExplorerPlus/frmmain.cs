@@ -61,12 +61,14 @@ namespace ExplorerPlus
                 case ENTRY_TYPE.Drive:
                     ExplorerPlusStatusDrive sdr = new ExplorerPlusStatusDrive(Convert.ToChar(path.Substring(0, 1)));
                     sdr.Dock = DockStyle.Fill;
+                    sdr.Show();
                     statuspanel.Controls.Clear();
                     statuspanel.Controls.Add(sdr);
                     break;
                 case ENTRY_TYPE.Directory:
                     ExplorerPlusStatusDirectory sd = new ExplorerPlusStatusDirectory(path);
                     sd.Dock = DockStyle.Fill;
+                    sd.Show();
                     statuspanel.Controls.Clear();
                     statuspanel.Controls.Add(sd);
                     break;
