@@ -1,10 +1,8 @@
 *.suo
-My Project
 [Bb]in
 [Dd]ebug
 [Rr]elease
 
-*.vbproj.user
 *.dll
 *.jpg
 *.txt
