@@ -122,25 +122,36 @@ namespace ExplorerPlus.API.Controls
         /// </summary>
         private void GetFolderSizeThisFolder()
         {
-            DirectoryInfo dir = new DirectoryInfo(dirpath); //Es ist eine DirectoryInfo notwendig
-            for (int i = 0; i < dir.GetDirectories().Length; i++)
+            try
             {
-                try
+                DirectoryInfo dir = new DirectoryInfo(dirpath); //Es ist eine DirectoryInfo notwendig
+                for (int i = 0; i < dir.GetDirectories().Length; i++)
                 {
-                    DirectoryInfo d = dir.GetDirectories()[i];
-                    ea.Invoke(d.Name, "Folder", d.LastWriteTime.ToString(), DirectoryFunctions.GetFolderSize(d.FullName));
+                    try
+                    {
+                        DirectoryInfo d = dir.GetDirectories()[i];
+                        ea.Invoke(d.Name, "Folder", d.LastWriteTime.ToString(), DirectoryFunctions.GetFolderSize(d.FullName));
+                    }
+                    catch { }
                 }
-                catch { }
-            }
 
-            for (int i = 0; i < dir.GetFiles().Length; i++)
-            {
-                try
+                for (int i = 0; i < dir.GetFiles().Length; i++)
                 {
-                    FileInfo f = dir.GetFiles()[i];
-                    ea.Invoke(f.Name, "File", f.LastWriteTime.ToString(), f.Length);
+                    try
+                    {
+                        FileInfo f = dir.GetFiles()[i];
+                        ea.Invoke(f.Name, "File", f.LastWriteTime.ToString(), f.Length);
+                    }
+                    catch { }
                 }
-                catch { }
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                System.Diagnostics.Debug.Print("Der Zugriff auf den Ordner '" + dirpath + "' ist wegen fehlender Berechtigungen verweigert");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print("Ein unbekannter Fehler ist beim Zugriff auf '" + dirpath + "' aufgetreten");
             }
         }
 
